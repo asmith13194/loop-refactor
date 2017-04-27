@@ -13,49 +13,39 @@ Run the command 'mocha' to test. Tests check for expected output and absence of 
 module.exports = {
 
   sum: (arr, base) => {
-    let sum = base;
-    for (var i = 0; i < arr.length; i++){
-      sum += arr[i];
-    }
-    return sum;
+  return arr.reduce(function(result, element) {
+  return result + element;
+}, base);
   },
 
-  someObjsContainProp: (arr, prop) => {
-    for(var i = 0; i < arr.length; i++){
-      if(arr[i].hasOwnProperty(prop)){
-        return true;
-      }
-    }
-    return false;
+  someObjsContainProp: (array, prop) => {
+    return array.some(function (element,index,arr){
+      return element.hasOwnProperty(prop)
+    })
   },
 
-  convertNameArrayToObject: (arr) => {
-    let nameObj = [];
-    for(var i = 0; i < arr.length; i++){
-      let obj = {};
-      obj.first = arr[i][0];
-      obj.last = arr[i][1];
-      nameObj.push(obj);
-    }
-    return nameObj;
+  convertNameArrayToObject: (array) => {
+    return array.map(function(element,index,arr){
+      var nameObj = [];
+      var obj = {};
+      obj.first = arr[index][0];
+      obj.last = arr[index][1];
+      return(obj)
+    })
+
   },
 
-  objContainsProp: (arr, prop) => {
-    for (var i = 0; i < arr.length; i++){
-      if(!arr[i].hasOwnProperty(prop)){
-        return false;
-      }
-    }
-    return true;
+  objContainsProp: (array, prop) => {
+    return array.every(function(element,index,arr){
+      if (element.hasOwnProperty(prop)){
+        return true
+      }return false
+    })
   },
 
-  stringMatch: (arr, str) => {
-    let matches = [];
-    for(var i = 0; i < arr.length; i++){
-      if (arr[i].includes(str)){
-        matches.push(arr[i]);
-      }
-    }
-    return matches;
+  stringMatch: (array, str) => {
+    return array.filter(function(element,index,arr){
+      return element.includes(str)
+    })
   },
 };
