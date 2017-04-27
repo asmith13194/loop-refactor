@@ -12,8 +12,8 @@ Run the command 'mocha' to test. Tests check for expected output and absence of 
 
 module.exports = {
 
-  sum: (arr, base) => {
-  return arr.reduce(function(result, element) {
+  sum: (array, base) => {
+  return array.reduce(function(result, element) {
   return result + element;
 }, base);
   },
