@@ -26,7 +26,6 @@ module.exports = {
 
   convertNameArrayToObject: (array) => {
     return array.map(function(element,index,arr){
-      var nameObj = [];
       var obj = {};
       obj.first = arr[index][0];
       obj.last = arr[index][1];
